@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en"
+>
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="${title}"></title>
+    <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css"
+          th:href="@{../bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="../../static/css/forms-errors.css"
+          th:href="@{../css/forms-errors.css}"/>
+</head>
+<body>
+<header th:replace="fragments/parts::menu">
+</header>
+<main>
+    <div class="container">
+        <div class="nb-error">
+            <div class="error-code">404</div>
+            <h3 class="font-bold">We couldn't find the page..</h3>
+
+            <div class="error-desc" th:text="${message}">
+                <div class="input-group">
+                    <input type="text" placeholder="Try with a search" class="form-control" />
+                    <span class="input-group-btn">
+               <button type="button" class="btn btn-default">
+                  <em class="fa fa-search"></em>
+               </button>
+            </span>
+                </div>
+                <ul class="list-inline text-center text-sm">
+                    <li class="list-inline-item"><a href="/user/login" class="text-muted">Login</a>
+                    </li>
+                    <li class="list-inline-item"><a href="/user/register" class="text-muted">Register</a>
+                    </li>
+                </ul>
+                <div class="text-center">
+                    <span>©</span>
+                    <span>2017</span>
+                    <span>-</span>
+                    <span>Rabbit Farm</span>
+                    <br>
+                    <span>Software system for Rabbit farms</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script th:src="@{../jquery/jquery.min.js}"></script>
+<script th:src="@{../bootstrap/js/bootstrap.min.js}"></script>
+<!--<script th:src="@{../js/request.js}"></script>-->
+</body>
+</html>
