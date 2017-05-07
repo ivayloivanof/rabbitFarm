@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<body>
+<div class="col-md-6" th:fragment="register-form">
+    <div th:if="${error} != null" th:text="${error}"></div>
+    <!-- Register Form -->
+    <div class="nb-auth-form">
+        <h3 class="center">Sign Up</h3>
+        <form method="post" th:object="${userRegisterBindingModel}">
+            <div class="form-group" th:classappend="${#fields.hasErrors('firstName')}? 'has-danger'">
+                <input type="text" class="form-control" placeholder="First Name" name="firstName" th:field="*{firstName}" />
+            </div>
+            <div class="form-group" th:classappend="${#fields.hasErrors('lastName')}? 'has-danger'">
+                <input type="text" class="form-control" placeholder="Last Name" name="lastName" th:field="*{lastName}" />
+            </div>
+            <div class="form-group" th:classappend="${#fields.hasErrors('email')}? 'has-danger'">
+                <input type="email" class="form-control" placeholder="Enter Email" name="email" th:field="*{email}" />
+            </div>
+            <div class="form-group" th:classappend="${#fields.hasErrors('password')}? 'has-danger'">
+                <input type="password" class="form-control" placeholder="Enter Password" name="password" th:field="*{password}" />
+            </div>
+            <div class="form-group" th:classappend="${#fields.hasErrors('passwordRepeat')}? 'has-danger'">
+                <input type="password" class="form-control" placeholder="Repeat Password" name="passwordRepeat" th:field="*{passwordRepeat}" />
+            </div>
+
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+            <button type="submit" class="btn btn-block">Sign Up</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

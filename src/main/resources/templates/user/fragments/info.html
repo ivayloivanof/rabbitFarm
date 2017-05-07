@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+        lang="en">
+<body>
+<div th:fragment="info">
+    <!-- Info -->
+    <table class="table table-striped text-center">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Remuneration</th>
+            <th>Edit/Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row" th:text="${userInfoViewModel.getId()}"></th>
+            <td th:text="${userInfoViewModel.getEmail()}"></td>
+            <td th:text="${userInfoViewModel.getFirstName()}"></td>
+            <td th:text="${userInfoViewModel.getLastName()}"></td>
+            <td th:text="${userInfoViewModel.getRemuneration()}"></td>
+            <td>
+                <button type="button" class="btn btn-warning">
+                    <a
+                        th:href="@{/user/edit/{id}(id=${userInfoViewModel.getId()})}"
+                        th:text="Edit"></a>
+                </button>
+                <button type="button" class="btn btn-danger" sec:authorize="hasAuthority('ADMIN')">
+                    <a
+                        th:href="@{/user/delete/{id}(id=${userInfoViewModel.getId()})}"
+                        th:text="Delete"></a>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
