@@ -4,6 +4,7 @@ public class PagesUrl {
 	public static final String HOME_PAGE = "/";
 	public static final String HOME_PAGE_TEXT = "Home";
 
+	//User
 	public static final String LOGIN_PAGE = "/user/login";
 	public static final String LOGIN_PAGE_TEXT = "Login";
 
@@ -19,7 +20,15 @@ public class PagesUrl {
 	public static final String USER_EDIT_PAGE = "/user/edit";
 	public static final String USER_EDIT_PAGE_TEXT = "Edit";
 
-	public static final String USER_DELETE_PAGE = "/user/edit";
-	public static final String USER_DELETE_PAGE_TEXT = "Edit";
+	public static final String USER_DELETE_PAGE = "/user/delete";
+	public static final String USER_DELETE_PAGE_TEXT = "Delete";
+
+	//Rabbit
+	public static final String RABBIT_SHOW_ALL = "/rabbit/show/all";
+	public static final String RABBIT_SHOW_ALL_TEXT = "All rabbit";
+
+	public static final String RABBIT_ADD = "/rabbit/add";
+	public static final String RABBIT_ADD_TEXT = "Add rabbit";
+
 
 }
