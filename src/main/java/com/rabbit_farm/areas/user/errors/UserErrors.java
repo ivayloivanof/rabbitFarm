@@ -1,4 +1,4 @@
-package com.rabbit_farm.configurations.errors;
+package com.rabbit_farm.areas.user.errors;
 
 public class UserErrors {
 	public static final String NOT_FOUND_USER = "User can't find in database!";

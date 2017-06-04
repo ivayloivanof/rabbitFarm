@@ -12,7 +12,7 @@ import com.rabbit_farm.areas.user.model.view.UserEditViewModel;
 import com.rabbit_farm.areas.user.model.view.UserInfoViewModel;
 import com.rabbit_farm.areas.user.repositories.UserRepository;
 import com.rabbit_farm.areas.user.services.UserService;
-import com.rabbit_farm.configurations.errors.UserErrors;
+import com.rabbit_farm.areas.user.errors.UserErrors;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

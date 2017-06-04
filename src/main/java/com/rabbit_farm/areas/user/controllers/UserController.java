@@ -8,7 +8,6 @@ import com.rabbit_farm.areas.user.model.view.UserInfoViewModel;
 import com.rabbit_farm.areas.user.services.UserService;
 import com.rabbit_farm.configurations.address.PagesTitle;
 import com.rabbit_farm.configurations.errors.Errors;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -26,6 +25,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+//TODO create tests for user
+
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -41,7 +42,7 @@ public class UserController {
 
 	@GetMapping("/login")
 	public String getLoginPage(Model model, @ModelAttribute UserLoginBindingModel userLoginBindingModel, @RequestParam(required = false) String error) {
-		model.addAttribute("title", PagesTitle.LOGIN_PAGE);
+		model.addAttribute("title", PagesTitle.USER_LOGIN_PAGE);
 
 		if (error != null) {
 			model.addAttribute("error", Errors.INVALID_LOGIN_CREDENTIALS);
@@ -52,7 +53,7 @@ public class UserController {
 
 	@GetMapping("/register")
 	public String getRegisterPage(Model model, @ModelAttribute UserRegisterBindingModel userRegisterBindingModel, @RequestParam(required = false) String error) {
-		model.addAttribute("pageTitle", PagesTitle.REGISTER_PAGE);
+		model.addAttribute("pageTitle", PagesTitle.USER_REGISTER_PAGE);
 
 		if (error != null) {
 			model.addAttribute("error", Errors.INVALID_REGISTER_CREDENTIALS);
@@ -95,7 +96,7 @@ public class UserController {
 
 		this.userService.updateUser(userRegisterBindingModel);
 
-		return "redirect:/car/all";
+		return "redirect:/user/info";
 	}
 
 	@GetMapping("/info")
