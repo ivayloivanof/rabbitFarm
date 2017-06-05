@@ -5,7 +5,7 @@ import com.rabbit_farm.areas.rabbit.models.view.RabbitEditViewModel;
 
 import java.util.Date;
 
-public class RabbitCreateBindingModel {
+public class RabbitEditBindingModel {
 
 	private String name;
 
@@ -17,7 +17,7 @@ public class RabbitCreateBindingModel {
 
 	private RabbitEditViewModel father;
 
-	public RabbitCreateBindingModel() {
+	public RabbitEditBindingModel() {
 	}
 
 	public String getName() {
