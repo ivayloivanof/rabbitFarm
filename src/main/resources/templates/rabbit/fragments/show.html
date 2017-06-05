@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+        lang="en">
+<body>
+<div th:fragment="show-all-rabbit-table">
+    <!-- Info -->
+    <table class="table table-striped text-center">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Rabbit type</th>
+            <th>Birth date</th>
+            <th>Father ID</th>
+            <th>Mother ID</th>
+            <th>Name</th>
+            <th>Sex</th>
+            <th>Days</th>
+            <th>Weight</th>
+            <th>Edit/Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <!--<th scope="row" th:text="${userInfoViewModel.getId()}"></th>-->
+            <!--<td th:text="${userInfoViewModel.getEmail()}"></td>-->
+            <!--<td th:text="${userInfoViewModel.getFirstName()}"></td>-->
+            <!--<td th:text="${userInfoViewModel.getLastName()}"></td>-->
+            <!--<td th:text="${userInfoViewModel.getRemuneration()}"></td>-->
+            <!--<td>-->
+                <!--<button type="button" class="btn btn-warning">-->
+                    <!--<a-->
+                        <!--th:href="@{/user/edit/{id}(id=${userInfoViewModel.getId()})}"-->
+                        <!--th:text="Edit"></a>-->
+                <!--</button>-->
+                <!--<button type="button" class="btn btn-danger" sec:authorize="hasAuthority('ADMIN')">-->
+                    <!--<a-->
+                        <!--th:href="@{/user/delete/{id}(id=${userInfoViewModel.getId()})}"-->
+                        <!--th:text="Delete"></a>-->
+                <!--</button>-->
+            <!--</td>-->
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
