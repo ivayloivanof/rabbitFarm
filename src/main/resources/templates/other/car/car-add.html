@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="${pageTitle}">User Login</title>
+    <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css"
+          th:href="@{../bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<header th:replace="fragments/parts::menu">
+</header>
+<main>
+    <div class="container">
+        <br/>
+        <p class="h2 text-center">Add car</p>
+        <div class="row">
+            <div class="col-sm-6">
+                <th:block th:replace="car/fragments/forms::car-add-form"></th:block>
+            </div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-2" id="carMakes"></div>
+            <div class="col-sm-2" id="carModels"></div>
+        </div>
+    </div>
+</main>
+<script th:src="@{../jquery/jquery.min.js}"></script>
+<script th:src="@{../bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{../js/request.js}"></script>
+</body>
+</html>

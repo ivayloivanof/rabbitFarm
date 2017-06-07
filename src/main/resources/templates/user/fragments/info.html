@@ -28,12 +28,12 @@
                 <button type="button" class="btn btn-warning">
                     <a
                         th:href="@{/user/edit/{id}(id=${userInfoViewModel.getId()})}"
-                        th:text="Edit"></a>
+                        th:text="${T(com.rabbit_farm.configurations.address.PagesUrl.USER_EDIT_PAGE_TEXT)}"></a>
                 </button>
                 <button type="button" class="btn btn-danger" sec:authorize="hasAuthority('ADMIN')">
                     <a
                         th:href="@{/user/delete/{id}(id=${userInfoViewModel.getId()})}"
-                        th:text="Delete"></a>
+                        th:text="${T(com.rabbit_farm.configurations.address.PagesUrl.USER_DELETE_PAGE_TEXT)}"></a>
                 </button>
             </td>
         </tr>

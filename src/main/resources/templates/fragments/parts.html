@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      lang="en">
+<body>
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded" th:fragment="menu">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">Rabbit Farm</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="nav nav-tabs justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link"
+                   th:href="${T(com.rabbit_farm.configurations.address.PagesUrl).HOME_PAGE}"
+                   th:text="${T(com.rabbit_farm.configurations.address.PagesUrl).HOME_PAGE_TEXT}">
+                    <!--<span class="sr-only">(current)</span>-->
+                </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">User</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" sec:authorize="isAnonymous()"
+                       th:href="${T(com.rabbit_farm.configurations.address.PagesUrl).LOGIN_PAGE}"
+                       th:text="${T(com.rabbit_farm.configurations.address.PagesUrl).LOGIN_PAGE_TEXT}"></a>
+                    <a class="dropdown-item" sec:authorize="isAnonymous()"
+                       th:href="${T(com.rabbit_farm.configurations.address.PagesUrl).REGISTER_PAGE}"
+                       th:text="${T(com.rabbit_farm.configurations.address.PagesUrl).REGISTER_PAGE_TEXT}"></a>
+                    <a class="dropdown-item" sec:authorize="isAuthenticated()"
+                       th:href="${T(com.rabbit_farm.configurations.address.PagesUrl).LOGOUT_PAGE}"
+                       th:text="${T(com.rabbit_farm.configurations.address.PagesUrl).LOGOUT_PAGE_TEXT}"></a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" sec:authorize="isAuthenticated()"
+                       th:href="${T(com.rabbit_farm.configurations.address.PagesUrl).USER_INFO_PAGE}"
+                       th:text="${T(com.rabbit_farm.configurations.address.PagesUrl).USER_INFO_PAGE_TEXT}"></a>
+                </div>
+            </li>
+            <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                   aria-expanded="false">Rabbit</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item"
+                       th:href="${T(com.rabbit_farm.configurations.address.PagesUrl).RABBIT_SHOW_ALL}"
+                       th:text="${T(com.rabbit_farm.configurations.address.PagesUrl).RABBIT_SHOW_ALL_TEXT}"></a>
+                    <a class="dropdown-item"
+                       th:href="${T(com.rabbit_farm.configurations.address.PagesUrl).RABBIT_ADD}"
+                       th:text="${T(com.rabbit_farm.configurations.address.PagesUrl).RABBIT_ADD_TEXT}"></a>
+                </div>
+            </li>
+            <!--<li class="nav-item dropdown" sec:authorize="isAuthenticated()">-->
+                <!--<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"-->
+                   <!--aria-expanded="false">Customer</a>-->
+                <!--<div class="dropdown-menu">-->
+                    <!--<a class="dropdown-item"-->
+                       <!--th:href="${T(bg.car_wash.configurations.site.PageUrl).CUSTOMER_ADD_PAGE}"-->
+                       <!--th:text="${T(bg.car_wash.configurations.site.PageTitle).CUSTOMER_ADD_PAGE}"></a>-->
+                    <!--<div class="dropdown-divider"></div>-->
+                    <!--<a class="dropdown-item"-->
+                       <!--th:href="${T(bg.car_wash.configurations.site.PageUrl).CUSTOMER_ALL_PAGE}"-->
+                       <!--th:text="${T(bg.car_wash.configurations.site.PageTitle).CUSTOMER_ALL_PAGE}"></a>-->
+                <!--</div>-->
+            <!--</li>-->
+            <!--<li class="nav-item dropdown" sec:authorize="isAuthenticated()">-->
+                <!--<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"-->
+                   <!--aria-expanded="false">Activity</a>-->
+                <!--<div class="dropdown-menu">-->
+                    <!--<a class="dropdown-item"-->
+                       <!--th:href="${T(bg.car_wash.configurations.site.PageUrl).ACTIVITY_ADD_PAGE}"-->
+                       <!--th:text="${T(bg.car_wash.configurations.site.PageTitle).ACTIVITY_ADD_PAGE}"></a>-->
+                    <!--<div class="dropdown-divider"></div>-->
+                    <!--<a class="dropdown-item"-->
+                       <!--th:href="${T(bg.car_wash.configurations.site.PageUrl).ACTIVITY_ALL_PAGE}"-->
+                       <!--th:text="${T(bg.car_wash.configurations.site.PageTitle).ACTIVITY_ALL_PAGE}"></a>-->
+                <!--</div>-->
+            <!--</li>-->
+        </ul>
+
+        <!--<form class="form-inline my-2 my-lg-0">-->
+            <!--<input class="form-control mr-sm-2" type="text" placeholder="Search" />-->
+            <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+        <!--</form>-->
+    </div>
+</nav>
+
+</body>
+</html>

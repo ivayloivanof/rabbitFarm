@@ -2,6 +2,7 @@ package com.rabbit_farm.areas.rabbit.controllers;
 
 import com.rabbit_farm.areas.rabbit.services.RabbitService;
 import com.rabbit_farm.configurations.address.PagesTitle;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -14,11 +15,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class RabbitController {
 
 	private RabbitService rabbitService;
+	private Authentication auth;
+
+	@Autowired
+	public RabbitController(RabbitService rabbitService) {
+		this.rabbitService = rabbitService;
+	}
 
 	@GetMapping("/show/all")
 	public String getRabbitShowPage(Model model) {
 		model.addAttribute("title", PagesTitle.RABBIT_ALL);
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		auth = SecurityContextHolder.getContext().getAuthentication();
 
 		return "rabbit/show";
 	}

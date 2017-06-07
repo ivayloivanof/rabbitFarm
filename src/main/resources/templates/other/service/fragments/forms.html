@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<body>
+
+<form method="post" th:fragment="service-add-form" th:object="${serviceBindingModel}" class="col-5">
+    <div th:if="${error} != null" th:text="${error}"></div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('serviceName')}? 'has-danger'">
+        <label for="serviceName">Service Name</label>
+        <input
+                type="text"
+                class="form-control"
+                id="serviceName"
+                aria-describedby="serviceNameHelp"
+                name="serviceName"
+                th:field="*{serviceName}"/>
+        <small
+                id="serviceNameHelp"
+                class="form-control-feedback"
+                th:each="error : ${#fields.errors('serviceName')}" th:text="${error}">Error
+        </small>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('servicePrice')}? 'has-danger'">
+        <label for="servicePrice">Service Price</label>
+        <input
+                type="number"
+                class="form-control"
+                id="servicePrice"
+                aria-describedby="servicePriceHelp"
+                name="servicePrice"
+                th:field="*{servicePrice}"/>
+        <small
+                id="servicePriceHelp"
+                class="form-control-feedback"
+                th:each="error : ${#fields.errors('servicePrice')}" th:text="${error}">Error
+        </small>
+    </div>
+    <div class="form-group">
+        <label for="activityId">Activity</label>
+        <select
+                id="activityId"
+                class="form-control"
+                name="activityId">
+            <option th:each="activityView : ${activityViewModel}"
+                    th:value="${activityView.getId()}"
+                    th:text="${activityView.getActivityName()}"></option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="carId">Car</label>
+        <select
+                id="carId"
+                class="form-control"
+                name="carId">
+            <option th:each="carView : ${carViewModel}"
+                    th:value="${carView.getId()}"
+                    th:text="${carView.getCarRegistrationNumber()}"></option>
+        </select>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('userType')}? 'has-danger'">
+        <label for="userType">Worker Type</label>
+        <select
+                id="userType"
+                class="form-control"
+                aria-describedby="userTypeHelp"
+                name="userType"
+                th:field="*{userType}">
+            <option
+                    th:value="${T(bg.car_wash.areas.user.entity.UserType).WORKER}"
+                    th:text="${T(bg.car_wash.areas.user.entity.UserType).WORKER}"></option>
+            <option
+                    th:value="${T(bg.car_wash.areas.user.entity.UserType).WASHER}"
+                    th:text="${T(bg.car_wash.areas.user.entity.UserType).WASHER}"></option>
+            <option
+                    th:value="${T(bg.car_wash.areas.user.entity.UserType).LAUNDERER}"
+                    th:text="${T(bg.car_wash.areas.user.entity.UserType).LAUNDERER}"></option>
+        </select>
+        <small
+                id="userTypeHelp"
+                class="form-control-feedback"
+                th:each="error : ${#fields.errors('userType')}" th:text="${error}">Error
+        </small>
+    </div>
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+    <button type="submit" class="btn btn-secondary">Add service</button>
+</form>
+
+<form method="post" th:fragment="service-edit-form" th:object="${serviceBindingModel}" class="col-5">
+    <div th:if="${error} != null" th:text="${error}"></div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('serviceName')}? 'has-danger'">
+        <label for="serviceName">Service Name</label>
+        <input
+                type="text"
+                class="form-control"
+                id="serviceName"
+                aria-describedby="serviceNameHelp"
+                name="serviceName"
+                th:value="${serviceViewModel.getServiceName()}"/>
+        <small
+                id="serviceNameHelp"
+                class="form-control-feedback"
+                th:each="error : ${#fields.errors('serviceName')}" th:text="${error}">Error
+        </small>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('servicePrice')}? 'has-danger'">
+        <label for="servicePrice">Service Price</label>
+        <input
+                type="number"
+                class="form-control"
+                id="servicePrice"
+                aria-describedby="servicePriceHelp"
+                name="servicePrice"
+                th:value="${serviceViewModel.getServicePrice()}"/>
+        <small
+                id="servicePriceHelp"
+                class="form-control-feedback"
+                th:each="error : ${#fields.errors('servicePrice')}" th:text="${error}">Error
+        </small>
+    </div>
+    <div class="form-group">
+        <label for="activityId">Activity</label>
+        <select
+                id="activityId"
+                class="form-control"
+                name="activityId">
+            <option th:each="activityView : ${activityViewModel}"
+                    th:value="${activityView.getId()}"
+                    th:text="${activityView.getActivityName()}"></option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="carId">Car</label>
+        <select
+                id="carId"
+                class="form-control"
+                name="carId">
+            <option th:each="carView : ${carViewModel}"
+                    th:value="${carView.getId()}"
+                    th:text="${carView.getCarRegistrationNumber()}"></option>
+        </select>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('userType')}? 'has-danger'">
+        <label for="userType">Worker Type</label>
+        <select
+                id="userType"
+                class="form-control"
+                aria-describedby="userTypeHelp"
+                name="userType"
+                th:value="${serviceViewModel.getUserType()}">
+            <option
+                    th:value="${T(bg.car_wash.areas.user.entity.UserType).WORKER}"
+                    th:text="${T(bg.car_wash.areas.user.entity.UserType).WORKER}"></option>
+            <option
+                    th:value="${T(bg.car_wash.areas.user.entity.UserType).WASHER}"
+                    th:text="${T(bg.car_wash.areas.user.entity.UserType).WASHER}"></option>
+            <option
+                    th:value="${T(bg.car_wash.areas.user.entity.UserType).LAUNDERER}"
+                    th:text="${T(bg.car_wash.areas.user.entity.UserType).LAUNDERER}"></option>
+        </select>
+        <small
+                id="userTypeHelp"
+                class="form-control-feedback"
+                th:each="error : ${#fields.errors('userType')}" th:text="${error}">Error
+        </small>
+    </div>
+    <input
+            type="hidden"
+            class="form-control"
+            id="id"
+            name="id"
+            th:value="${serviceViewModel.getId()}"/>
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+    <button type="submit" class="btn btn-secondary">Edit service</button>
+</form>
+
+</body>
+</html>

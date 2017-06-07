@@ -1,5 +1,6 @@
 package com.rabbit_farm.configurations.security;
 
+import com.rabbit_farm.areas.user.enumerations.UserRole;
 import com.rabbit_farm.areas.user.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -44,6 +45,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 						"/js/**",
 						"/connect/**",
 						"/css/**").permitAll()
+				.antMatchers("/rabbit/**").hasAuthority(UserRole.WORKER.toString())
 				.anyRequest().authenticated()
 				.and()
 				.formLogin().loginPage("/user/login").permitAll()

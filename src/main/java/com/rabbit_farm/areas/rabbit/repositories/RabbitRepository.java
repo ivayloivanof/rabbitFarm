@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RabbitRepository extends JpaRepository<Rabbit, Long> {
-
+	Rabbit findRabbitById(Long id);
 }

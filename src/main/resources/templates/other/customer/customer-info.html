@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="${pageTitle}"></title>
+    <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css"
+          th:href="@{../../bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<header th:replace="fragments/parts::menu">
+</header>
+<main>
+    <div class="container">
+        <br/>
+        <p class="h2 text-center">Customer info</p>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Customer name</th>
+                <th>Phone number</th>
+                <th>Registration/Update date</th>
+                <th>Discount</th>
+                <th>Cars</th>
+                <th>Edit/Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row" th:text="${customerViewModel.getId()}"></th>
+                <td th:text="${customerViewModel.getName()}"></td>
+                <td th:text="${customerViewModel.getPhoneNumber()}"></td>
+                <td th:text="${customerViewModel.getDate()}"></td>
+                <td th:text="${customerViewModel.getDiscount()}"></td>
+                <td>
+                    <p th:each="car : ${customerViewModel.getCars()}">
+                        <a th:text="${car.getCarRegistrationNumber()}"
+                           th:href="@{/car/edit/{id}(id=${car.getId()})}"></a>
+                    </p>
+                </td>
+                <td sec:authorize="hasAuthority('ADMIN')">
+                    <button type="button" class="btn btn-warning">
+                        <a th:href="@{/customer/edit/{id}(id=${customerViewModel.getId()})}" th:text="Edit"></a>
+                    </button>
+                    <button type="button" class="btn btn-danger">
+                        <a th:href="@{/customer/delete/{id}(id=${customerViewModel.getId()})}" th:text="Delete"></a>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+<script th:src="@{../../jquery/jquery.min.js}"></script>
+<script th:src="@{../../bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{../../js/request.js}"></script>
+</body>
+</html>

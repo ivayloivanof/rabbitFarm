@@ -9,6 +9,8 @@ import java.util.List;
 @DiscriminatorValue(value = "rabbit_breeding")
 public class RabbitBreeding extends  Rabbit{
 
+	private static final long serialVersionUID = 7329334044318739734L;
+
 	@Basic
 	private Double weight;
 

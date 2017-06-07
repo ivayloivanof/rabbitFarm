@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="${pageTitle}"></title>
+    <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css"
+          th:href="@{../bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<header th:replace="fragments/parts::menu">
+</header>
+<main>
+    <div class="container">
+        <br/>
+        <p class="h2 text-center">All services</p>
+        <table class="table table-striped col-10">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Service name</th>
+                <th>Service price</th>
+                <th>Car type</th>
+                <th>Worker type</th>
+                <th>Edit/Delete</th>
+                <th>Activities</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="service : ${servicesViewModel}">
+                <th scope="row" th:text="${service.getId()}"></th>
+                <td th:text="${service.getServiceName()}"></td>
+                <td th:text="${service.getServicePrice()}"></td>
+                <td th:text="${service.getCarType()}"></td>
+                <td th:text="${service.getUserType()}"></td>
+                <td>
+                    <button type="button" class="btn btn-warning">
+                        <a th:href="@{/service/edit/{id}(id=${service.getId()})}" th:text="Edit"></a>
+                    </button>
+                    <button type="button" class="btn btn-danger" sec:authorize="hasAuthority('ADMIN')">
+                        <a th:href="@{/service/delete/{id}(id=${service.getId()})}" th:text="Delete"></a>
+                    </button>
+                </td>
+                <td th:if="${service.getActivities() != null}">
+                    <p th:each="activity : ${service.getActivities()}">
+                        <a th:href="@{/activity/edit/{id}(id=${activity.getId()})}"
+                           th:text="${activity.getActivityName()}"></a>
+                    </p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+<script th:src="@{../jquery/jquery.min.js}"></script>
+<script th:src="@{../bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{../js/request.js}"></script>
+</body>
+</html>

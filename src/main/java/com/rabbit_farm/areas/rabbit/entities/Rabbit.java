@@ -13,6 +13,8 @@ import java.util.Date;
 @DiscriminatorColumn(name = "rabbit_type")
 public abstract class Rabbit implements Serializable {
 
+	private static final long serialVersionUID = -5387530843605959352L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

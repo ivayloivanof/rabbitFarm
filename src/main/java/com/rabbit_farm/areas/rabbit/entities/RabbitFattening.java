@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 @DiscriminatorValue(value = "rabbit_fattening")
 public class RabbitFattening extends  Rabbit {
 
+	private static final long serialVersionUID = -5940263160774702022L;
+
 	@Basic
 	private Double weight;
 

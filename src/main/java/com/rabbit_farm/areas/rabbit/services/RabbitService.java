@@ -1,6 +1,5 @@
 package com.rabbit_farm.areas.rabbit.services;
 
-import com.rabbit_farm.areas.rabbit.entities.Rabbit;
 import com.rabbit_farm.areas.rabbit.exceptions.InvalidRabbitException;
 import com.rabbit_farm.areas.rabbit.exceptions.RabbitNotFoundException;
 import com.rabbit_farm.areas.rabbit.exceptions.RabbitsDbEmptyException;
@@ -16,9 +15,9 @@ public interface RabbitService {
 
 	void update(RabbitEditBindingModel rabbitEditBindingModel)  throws RabbitNotFoundException;
 
-	RabbitEditViewModel findRabbitById() throws RabbitNotFoundException;
+	RabbitEditViewModel findRabbitById(Long id) throws RabbitNotFoundException;
 
 	List<RabbitEditViewModel> findAllRabbits() throws RabbitsDbEmptyException;
 
-	void delete(Rabbit rabbit);
+	void delete(RabbitEditViewModel rabbit);
 }
